@@ -1,0 +1,55 @@
+text,label,note
+"I'm surprised so many people would be impacted by this. Why bet your livelihood on a corporate sponsored, second class ecosystem?",hot_take,ai-prelabelled
+"The lean startup methodology is fundamentally antithetical to companies like OpenAI, Anthropic, Antares, etc.
+
+How do you resolve the difference between the short term nature of the lean startup, and the long term optimistic nature of LTSE?",question,ai-prelabelled
+This is the stuff I want to read on HN!,reaction,ai-prelabelled
+"I'd love to say yes, but it's basically unenforcable if the comment doesnt disclose it itself.",hot_take,ai-prelabelled
+"The expectation confirmation theory[0].
+
+Someone else’s unrealistic assessment frame expectations, especially when they are attempting to speak from a place of authority, which they were. When reality doesn’t meet or exceed those expectations it creates disappointment. The expectations they set were impossibly high.
+
+This is a pretty common thing. I’m sure we’ve all been disappointed by a movie or restaurant that a friend hyped up endlessly, which really didn’t live up to the expectations that were set. It’s the same deal here.
+
+[0] https://en.wikipedia.org/wiki/Expectation_confirmation_theory",analysis,ai-prelabelled
+"That's not how morality works. If mass surveillance is wrong today, then it will be wrong tomorrow.",hot_take,ai-prelabelled
+What is the mode of pollution here? And why is the energy price an issue rather than a need to revamp the electricity production?,question,ai-prelabelled
+"You'd need the whole edit tree along with all the prompts used along the way, which most people are not yet set up to capture.",hot_take,ai-prelabelled
+"I see what you mean, though ITAR restricted software has been around for decades. It classifies some software as ""munitions"" :)",analysis,ai-prelabelled
+"I don’t know if it’s production ready yet, but tangled.org is a really interesting take on a forge and I’ve been watching it for a while. It decentralizes the centralized parts of GitHub in a pretty neat way. The biggest problem with forges that aren’t GitHub is people need to make and manage all these different accounts for each place they contribute (which almost certainly will lower the amount of people who do. Maybe this is a good thing these days though...)
+
+Tangled uses the identity stuff from atproto which lets the important stuff (git, CI, etc) be decentralized while people only need one identity to contribute (and you can self host your PDS too). So nothing ends up being reliant on a third party.",hot_take,"ai-prelabelled; relabelled analysis->hot_take (recommendation, no checkable detail)"
+I thought it is very easy to burn and SD card. Since when can you use it as storage expansion?,question,ai-prelabelled
+"If you want that you won't want this steam machine, HDMI 2.0 can do 4K60 HDR at 10-bit, but only with chroma subsampling (4:2:2 or 4:2:0) (not full 4:4:4).",analysis,ai-prelabelled
+"I'm only counting 3 frontier models in the U.S.…
+
+Oh, Claude tells me Llama and Grok might count.",reaction,ai-prelabelled
+"Didn't notice the username ""dang_fan"". Reading the usernames makes it even more funny.
+
+""Show HN: AlgoDrill – Interactive drills to stop forgetting LeetCode patterns "" by persistence_is_key",reaction,ai-prelabelled
+"Hear hear. And like many other aspects of accessibility, it will help a huge number of people who may not have any severe issues. e.g. non-native English speakers using LLM-powered edits.",reaction,ai-prelabelled
+"I still think it has strong normative value. Maybe at some point when norms have become firmly established these comments will be pointless and spammy but I don't think we're anywhere close to that point yet.
+
+A lot of blogging is essentially self-expression and that stuff won't be taken over by LLMs (it defeats the whole point). Other blogging is done with some kind of sales/promotional/brand purpose and the extent to which LLMs will dominate this will depend on how we as a society react to it (see the AI art battles) since if people react negatively to it it becomes counterproductive.",hot_take,ai-prelabelled
+"This directive only apply if you are trading (aka making money) with the app. Why does Google force-collect all this information when you can opt to not be a trader (no in-app purchases, no ads, etc)?",question,ai-prelabelled
+"Of course i care that i lose money.
+
+I dont care that google loses money.",hot_take,ai-prelabelled
+Sadly yes. Sam Altman wants online ID face scanning technology just like the administration does.,hot_take,ai-prelabelled
+"If Claude Code is Anthropic’s main focus why are they not responding to some of the most commented issues on their GitHub? https://github.com/anthropics/claude-code/issues/3648 has people begging for feedback and saying they’re moving to OpenAI, has been open since July and there are similar issues with 100+ comments.",analysis,ai-prelabelled
+"Not sure if you saw this, but another user pointed out that Mattermost is moving to limit self-hosted instances to 1,000 users: https://forum.mattermost.com/t/solved-is-there-any-limitations-on-user-count-mattermost-community-version/11580/5",analysis,ai-prelabelled
+"Do you use deepcode, or which cli and/or coding agent you use it with?",question,ai-prelabelled
+"You're not a luddite, they disclosed it because you're _supposed_ to take it with a grain of salt",reaction,cold; AI pre-label was hot_take
+Try reading a 40+ page document with track changes enabled (and 100+ changes) - it pins a full CPU core for 5 seconds when you go to the next page!,analysis,ai-prelabelled
+"It was a pretty big deal by the time list comprehensions were added to Python, though, in 02000: https://peps.python.org/pep-0202/
+
+It's true that Python didn't cater to static analysis at all.",analysis,ai-prelabelled
+"> heavy brick like every Linux phone I read about
+
+So you didn't read about Pinephone? Also, fighting against something requires efforts, you know.",hot_take,ai-prelabelled
+"Ooh yes, thanks, I didn’t even think about that, I was too focused on the other parts. Much nicer, updated.",reaction,ai-prelabelled
+"Also loved the detachable keyboard (which has me fantasize about a detachable screen as well + external hdmi/displayport, as I hate the working positions I end up in with a laptop, so it'd be nice to be able to get a more comfortable setup in a hotel room etc. that still packages up to a laptop.",reaction,ai-prelabelled
+But then couldn't the authorities just intercept it too and then block those ips?,question,ai-prelabelled
+"I don't think it's fair to include the entire population of the US in that total, even the 78 million children who can't vote. And people who didn't vote made their choice as well.
+
+By that logic, no democracy in the world elects their leaders with a 50%+ majority, not even countries with mandatory voting laws like Australia or Belgium.",analysis,ai-prelabelled
