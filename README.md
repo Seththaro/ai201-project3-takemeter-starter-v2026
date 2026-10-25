@@ -339,6 +339,46 @@ My prediction was only half right. I expected the baseline to beat the 3-epoch m
 
 ---
 
+## Run Log — Before
+
+The system as it stood at the end of unit 5: `distilbert-base-uncased`, 3 epochs, learning rate 2e-5, batch size 16, 250 rows. Three trials means three different random splits (seeds 42, 7 and 2024) of the same file, retrained from scratch each time. Written by notebook section 6 into `results_three_seeds_before.json`. Device: **cpu**. Each split has 38 test posts (8 `analysis`, 9 `hot_take`, 8 `reaction`, 13 `question`).
+
+| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
+|---|---|---|---|---|---|
+| 1. Overall accuracy | ≥ 0.65 on every seed | 0.395 | 0.342 | 0.368 | MISSED |
+| 2. Every label F1 | ≥ 0.55 on every seed | min 0.000 (`hot_take`, `reaction`) | min 0.000 (`analysis`, `hot_take`, `reaction`) | min 0.000 (`analysis`, `hot_take`) | MISSED |
+| 3. Label balance | biggest ≤ 40%, smallest ≥ 15% of `labels.csv` | 35.6% / 20.0% | 35.6% / 20.0% | 35.6% / 20.0% | MET |
+| 4. Agreement with staff | ≥ 21 of 30 | not a per-seed measure | — | — | NOT TESTED (no staff labels; see Agreement Report) |
+| 5. Confidence | most-confident third ≥ 0.80 and ≥ 0.15 above least-confident third | 0.917 vs 0.167 | 0.833 vs 0.000 | 0.917 vs 0.167 | MET |
+
+Per-label F1 on each seed (the data behind criterion 2):
+
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.395 | 0.342 | 0.368 | 0.053 |
+| Macro F1 | 0.233 | 0.127 | 0.186 | 0.105 |
+| F1 — `analysis` | 0.400 | 0.000 | 0.000 | 0.400 |
+| F1 — `hot_take` | 0.000 | 0.000 | 0.000 | 0.000 |
+| F1 — `reaction` | 0.000 | 0.000 | 0.222 | 0.222 |
+| F1 — `question` | 0.531 | 0.510 | 0.520 | 0.021 |
+
+Accuracy moved only 0.053 across seeds here, but that is stable for a bad reason: on every seed the model was stuck on one label.
+
+### Confusion matrix
+
+Seed 42, 3 epochs, device **cpu**. Rows are true labels, columns are the model's guesses.
+
+| true \ predicted | analysis | hot_take | reaction | question |
+|---|---|---|---|---|
+| **analysis** | 2 | 0 | 0 | 6 |
+| **hot_take** | 0 | 0 | 0 | 9 |
+| **reaction** | 0 | 0 | 0 | 8 |
+| **question** | 0 | 0 | 0 | 13 |
+
+**My biggest off-diagonal number, and what it means:** 9 real `hot_take` posts were called `question` and 0 went the other way, and the `reaction` row is the same (8 of 8 called `question`). That's not one boundary the model failed to learn: it is the model answering `question` for 36 of 38 posts (every post except the 2 it got right as `analysis`), which is the majority label (35.6% of the file) and where the column precision of 0.36 matches the label's 34% share of the test split. Seeds 7 and 2024 show the same collapse (all 38 and 37 of 38 predicted `question`).
+
+---
+
 <!-- ═════════════════════════════════════════════════════════════════════
 
      SUBMISSION CHECKLIST — unit 5
