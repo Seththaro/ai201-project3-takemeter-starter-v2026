@@ -379,6 +379,51 @@ Seed 42, 3 epochs, device **cpu**. Rows are true labels, columns are the model's
 
 ---
 
+## The Improvement
+
+Improvement 1 (required): epochs 3 → 8.
+
+**What I changed:** `EPOCHS` from 3 to 8 in the notebook. Nothing else: same 250 rows, same labels, same learning rate (2e-5), batch size (16), length (128) and the same three seeds, so the splits are identical to the before run.
+
+**Which diagnosis pointed at it:** The before-run confusion matrix shows the model collapsed onto `question` on every seed (see Run Log — Before and Verdicts and Diagnoses): it had not trained long enough to separate the labels, and the unit 5 stretch run had already shown that 8 epochs fixed the collapse on one seed. The evidence that this was training and not labels is that this one change takes accuracy from 0.395 to 0.737 on seed 42 without touching a single label.
+
+### Run Log — After
+
+Same table, same seeds, `results_three_seeds_after.json`, device **cpu**, 38 test posts per seed as before.
+
+| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
+|---|---|---|---|---|---|
+| 1. Overall accuracy | ≥ 0.65 on every seed | 0.737 | 0.763 | 0.658 | MET |
+| 2. Every label F1 | ≥ 0.55 on every seed | min 0.500 (`reaction`) | min 0.556 (`hot_take`) | min 0.400 (`reaction`) | MISSED |
+| 3. Label balance | biggest ≤ 40%, smallest ≥ 15% | 35.6% / 20.0% | 35.6% / 20.0% | 35.6% / 20.0% | MET |
+| 4. Agreement with staff | ≥ 21 of 30 | not a per-seed measure | — | — | NOT TESTED (no staff labels; see Agreement Report) |
+| 5. Confidence | most-confident third ≥ 0.80 and ≥ 0.15 above least-confident third | 0.917 vs 0.417 | 0.833 vs 0.500 | 0.750 vs 0.500 | MISSED |
+
+
+**Did it help, and how do I know:** Yes. Accuracy rose on all three seeds (0.395 → 0.737, 0.342 → 0.763, 0.368 → 0.658, which is +0.342, +0.421 and +0.290) and macro F1 rose from 0.233, 0.127, 0.186 to 0.681, 0.744, 0.607. Criterion 1 went from MISSED to MET, and the collapse onto `question` is gone: the model now puts `reaction` and `hot_take` posts into their own columns. It did not fix criterion 2 (reaction F1 0.500 and 0.400 on two seeds) and criterion 5 flipped from MET to MISSED, but only because seed 2024's most-confident third is 9 of 12 correct (0.750), one post short of the 0.80 target. The new weakness is that accuracy now moves 0.105 across seeds, which is over the ten points where the notebook says the dataset is too small for a stable measure, and the big swing is `analysis` (F1 0.857 on seed 7 vs 0.421 on seed 2024).
+
+**Supporting numbers (after improvement 1):**
+
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.737 | 0.763 | 0.658 | 0.105 |
+| Macro F1 | 0.681 | 0.744 | 0.607 | 0.137 |
+| F1 — `analysis` | 0.762 | 0.857 | 0.421 | 0.436 |
+| F1 — `hot_take` | 0.533 | 0.556 | 0.727 | 0.194 |
+| F1 — `reaction` | 0.500 | 0.667 | 0.400 | 0.267 |
+| F1 — `question` | 0.929 | 0.897 | 0.880 | 0.049 |
+
+Confusion matrix, seed 42, 8 epochs, device **cpu**:
+
+| true \ predicted | analysis | hot_take | reaction | question |
+|---|---|---|---|---|
+| **analysis** | 8 | 0 | 0 | 0 |
+| **hot_take** | 2 | 4 | 1 | 2 |
+| **reaction** | 3 | 2 | 3 | 0 |
+| **question** | 0 | 0 | 0 | 13 |
+
+---
+
 <!-- ═════════════════════════════════════════════════════════════════════
 
      SUBMISSION CHECKLIST — unit 5
