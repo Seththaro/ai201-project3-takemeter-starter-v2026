@@ -1,0 +1,66 @@
+text,gold,predicted,confidence
+Have you tried the 27B dense version? It’s way better for coding.,question,question,0.584
+100% agree! Teaching others to teach helps broaden their perspective/ world as well. Everyone wins,reaction,reaction,0.507
+Turns out people really tune in when the world is on fire!,reaction,reaction,0.746
+"I still think it has strong normative value. Maybe at some point when norms have become firmly established these comments will be pointless and spammy but I don't think we're anywhere close to that point yet.
+
+A lot of blogging is essentially self-expression and that stuff won't be taken over by LLMs (it defeats the whole point). Other blogging is done with some kind of sales/promotional/brand purpose and the extent to which LLMs will dominate this will depend on how we as a society react to it (see the AI art battles) since if people react negatively to it it becomes counterproductive.",hot_take,hot_take,0.555
+"I guess, in theory, this can eventually be countered by people using LLM browser integrations to tell them whether comments are worth reading (and maybe to summarize long comments). Is anyone currently working on that? It might be interesting to see.",question,question,0.525
+"I see what you mean, though ITAR restricted software has been around for decades. It classifies some software as ""munitions"" :)",analysis,analysis,0.339
+"Oh look, Anthropic now has a reason to conduct age verification.
+Great.",reaction,reaction,0.802
+"Of course i care that i lose money.
+
+I dont care that google loses money.",hot_take,reaction,0.393
+What is the mode of pollution here? And why is the energy price an issue rather than a need to revamp the electricity production?,question,question,0.822
+Sadly yes. Sam Altman wants online ID face scanning technology just like the administration does.,hot_take,reaction,0.612
+Thank you from the bottom of our organic hearts!,reaction,reaction,0.793
+"So what are our options (eg for EU citizens) for lobbying in terms of legislation or directly to Google to show disagreement with this?
+
+It looks like many in this thread are against, but I don't see suggestions for action?",question,question,0.816
+"You'd need the whole edit tree along with all the prompts used along the way, which most people are not yet set up to capture.",hot_take,hot_take,0.386
+"Not sure if you saw this, but another user pointed out that Mattermost is moving to limit self-hosted instances to 1,000 users: https://forum.mattermost.com/t/solved-is-there-any-limitations-on-user-count-mattermost-community-version/11580/5",analysis,analysis,0.7
+"I don't think it's fair to include the entire population of the US in that total, even the 78 million children who can't vote. And people who didn't vote made their choice as well.
+
+By that logic, no democracy in the world elects their leaders with a 50%+ majority, not even countries with mandatory voting laws like Australia or Belgium.",analysis,hot_take,0.472
+"my favorite part of joining a new team is reading old merge requests and tickets that have a summary of ""the reason is based this slack conversation"" and then have a link to a slack conversation from a year ago... in an org that deletes slack chats older than 1 year.",reaction,analysis,0.337
+Is LTSE working the way you hoped?,question,question,0.855
+"The expectation confirmation theory[0].
+
+Someone else’s unrealistic assessment frame expectations, especially when they are attempting to speak from a place of authority, which they were. When reality doesn’t meet or exceed those expectations it creates disappointment. The expectations they set were impossibly high.
+
+This is a pretty common thing. I’m sure we’ve all been disappointed by a movie or restaurant that a friend hyped up endlessly, which really didn’t live up to the expectations that were set. It’s the same deal here.
+
+[0] https://en.wikipedia.org/wiki/Expectation_confirmation_theory",analysis,analysis,0.568
+I love this wholesome post,reaction,reaction,0.717
+"I have good memories about a website with ELF's for the Siemens phones. Its name had ""kebab"" in it. By any chance, was it you running it?",question,question,0.8
+lmao US needs China's input on how to build the GFW.,reaction,hot_take,0.378
+"That's not how morality works. If mass surveillance is wrong today, then it will be wrong tomorrow.",hot_take,hot_take,0.593
+"> heavy brick like every Linux phone I read about
+
+So you didn't read about Pinephone? Also, fighting against something requires efforts, you know.",hot_take,question,0.357
+"""Over six times the horsepower of Steam Deck"" ≈ RTX 3060 Laptop?",question,question,0.68
+"given that the US likes to declare jurisdiction whenever somebody touches a US dollar, any thoughts on why those same constitutional protections wouldnt follow?",question,question,0.839
+Try reading a 40+ page document with track changes enabled (and 100+ changes) - it pins a full CPU core for 5 seconds when you go to the next page!,analysis,analysis,0.389
+"It was a pretty big deal by the time list comprehensions were added to Python, though, in 02000: https://peps.python.org/pep-0202/
+
+It's true that Python didn't cater to static analysis at all.",analysis,analysis,0.654
+"I'd love to say yes, but it's basically unenforcable if the comment doesnt disclose it itself.",hot_take,hot_take,0.392
+I thought OpenVPN simply opens a TLS encrypted connection. How does it look different than HTTPS?,question,question,0.85
+"when it was announced i said ""oh shit, this is stupid as fuck!""",reaction,reaction,0.703
+I thought it is very easy to burn and SD card. Since when can you use it as storage expansion?,question,question,0.811
+So…US wants to win the AI race by…preventing AI use. Classic.,reaction,reaction,0.465
+"I'm surprised so many people would be impacted by this. Why bet your livelihood on a corporate sponsored, second class ecosystem?",hot_take,question,0.819
+alright that's a unique home page. i am definitely not that creative. love the custom cursor too,reaction,reaction,0.778
+"The lean startup methodology is fundamentally antithetical to companies like OpenAI, Anthropic, Antares, etc.
+
+How do you resolve the difference between the short term nature of the lean startup, and the long term optimistic nature of LTSE?",question,question,0.748
+"If Claude Code is Anthropic’s main focus why are they not responding to some of the most commented issues on their GitHub? https://github.com/anthropics/claude-code/issues/3648 has people begging for feedback and saying they’re moving to OpenAI, has been open since July and there are similar issues with 100+ comments.",analysis,analysis,0.673
+"Do you use deepcode, or which cli and/or coding agent you use it with?",question,question,0.86
+"I don’t know if it’s production ready yet, but tangled.org is a really interesting take on a forge and I’ve been watching it for a while. It decentralizes the centralized parts of GitHub in a pretty neat way. The biggest problem with forges that aren’t GitHub is people need to make and manage all these different accounts for each place they contribute (which almost certainly will lower the amount of people who do. Maybe this is a good thing these days though...)
+
+Tangled uses the identity stuff from atproto which lets the important stuff (git, CI, etc) be decentralized while people only need one identity to contribute (and you can self host your PDS too). So nothing ends up being reliant on a third party.",hot_take,analysis,0.329
+What do you find awful about 1Password today?,question,question,0.857
+Thank you. Going to buy your books to read up first. Thanks again for the AMA and all your thoughtful responses for the HN crowd,reaction,reaction,0.795
+"If you want that you won't want this steam machine, HDMI 2.0 can do 4K60 HDR at 10-bit, but only with chroma subsampling (4:2:2 or 4:2:0) (not full 4:4:4).",analysis,analysis,0.572
+"I will forever call it the Amazon Swindle now, that's hilarious",reaction,reaction,0.786
