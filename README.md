@@ -284,24 +284,44 @@ them to my label. The 50 extra `question` rows were pre-labelled the same way. T
 
 ---
 
-<!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
-
-     Don't fill these in during unit 5.
-     ═══════════════════════════════════════════════════════════════════ -->
-
 ---
 
 ## Baseline vs. Trained
 
-<!-- Both models on the same posts. `python baseline.py --trained results.json`
-     prints this table for you. -->
+All numbers below are scored on the **same 38 posts** (`test_split.csv`, the seed-42 split of the 250-row file). The baseline is `facebook/bart-large-mnli` run zero-shot on this machine with no training, using only the definitions in `label_definitions.txt`. The trained model is the unit 5 main run in `results.json` (3 epochs, seed 42). Device for every trained run in this README: **cpu** (torch 2.14.1+cpu, Windows), as `results.json` and the `results_three_seeds_*.json` files record. This is the table `python baseline.py --trained results.json` prints:
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.237 | 0.395 | +0.158 |
+| Macro F1 | 0.189 | 0.233 | +0.043 |
+| F1 — `analysis` | 0.316 | 0.400 | +0.084 |
+| F1 — `hot_take` | 0.000 | 0.000 | +0.000 |
+| F1 — `reaction` | 0.308 | 0.000 | -0.308 |
+| F1 — `question` | 0.133 | 0.531 | +0.397 |
+
+The same posts, but with the baseline run on bare label names (no definitions, `baseline_bare_names.json`), which turned out to be the stronger baseline:
+
+| Measure | Baseline (bare names) | Trained (3 epochs) | Difference |
+|---|---|---|---|
+| Overall accuracy | 0.526 | 0.395 | -0.131 |
+| Macro F1 | 0.402 | 0.233 | -0.169 |
+| F1 — `analysis` | 0.000 | 0.400 | +0.400 |
+| F1 — `hot_take` | 0.353 | 0.000 | -0.353 |
+| F1 — `reaction` | 0.533 | 0.000 | -0.533 |
+| F1 — `question` | 0.722 | 0.531 | -0.192 |
+
+And against the trained model after improvement 1 (8 epochs, seed 42, the same 38 test posts, from `results_three_seeds_after.json`):
+
+| Measure | Baseline (definitions) | Baseline (bare names) | Trained (8 epochs) | Difference vs. definitions | Difference vs. bare names |
+|---|---|---|---|---|---|
+| Overall accuracy | 0.237 | 0.526 | 0.737 | +0.500 | +0.211 |
+| Macro F1 | 0.189 | 0.402 | 0.681 | +0.492 | +0.279 |
+| F1 — `analysis` | 0.316 | 0.000 | 0.762 | +0.446 | +0.762 |
+| F1 — `hot_take` | 0.000 | 0.353 | 0.533 | +0.533 | +0.180 |
+| F1 — `reaction` | 0.308 | 0.533 | 0.500 | +0.192 | -0.033 |
+| F1 — `question` | 0.133 | 0.722 | 0.929 | +0.796 | +0.207 |
+
+`baseline_results.json` is the run that uses my definitions from `label_definitions.txt` (the default). `baseline_bare_names.json` is the same model and posts with the definitions removed, which I ran on purpose to measure what my definitions were worth. The run after improvement 2 is not in this table because adding 30 rows changed the split to a different 42 posts, so it can't be compared with the baseline like-for-like.
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
@@ -309,165 +329,15 @@ them to my label. The 50 extra `question` rows were pre-labelled the same way. T
 
 Written before I ran `baseline.py`, and after unit 5, so I already knew my main run (3 epochs) scored only 0.395 accuracy on its 38 test posts. Given that, my prediction is: the zero-shot baseline will beat my trained model on overall accuracy (I'd guess 0.45 to 0.55), and the trained model will only beat it on `question`, where a fine-tuned model can learn the "?" cue and a zero-shot model reading a long definition may not. I expect the baseline to be weakest on `reaction` and `hot_take`, because zero-shot reads my definitions literally and my `hot_take` definition is mostly defined by what is absent.
 
+My prediction was only half right. I expected the baseline to beat the 3-epoch model on accuracy and it didn't against the version that uses my definitions (0.237 vs 0.395), though it did against the bare-names version (0.526 vs 0.395). I was right that `hot_take` would be the baseline's weakest label (F1 0.000 with definitions), and I was wrong that the baseline would lose to the trained model on `question`: with bare names it got 0.722 against the 3-epoch model's 0.531.
+
 **What the gap actually means:**
-<!-- If the baseline matched your trained model, your fine-tuning added
-     nothing — and that is a real finding, not a failure. Say it plainly. -->
 
-
-
----
-
-## Run Log — Before
-
-<!-- Five criteria across three seeds. The notebook's section 6 prints the
-     spread table; the Target and Verdict columns are yours. -->
-
-| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
-
-### Confusion matrix
-
-<!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
-     An image of a matrix earns nothing. -->
-
-| true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
-
-**My biggest off-diagonal number, and what it means:**
-<!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
-     direction. "7 real analysis posts were called hot_take and only 3 went the
-     other way" is a direction, not just an error rate. -->
-
-
+1. **My definitions made the baseline worse, not better.** With definitions the baseline scored 0.237 accuracy, below the 25% a coin flip gets across four labels. Without them it scored 0.526. So the definitions were worth **-0.289** accuracy. Looking at the predictions, the definition prompt sent 30 of 38 posts to `analysis` (its definition is the longest and most general, so a general-purpose entailment model finds it the best fit for almost any post), while bare names sent 23 of 38 to `question` and 8 to `hot_take` and never predicted `analysis` at all. So the baseline is only as fair as the definitions, and mine are long and abstract for a zero-shot model.
+2. **The 3-epoch fine-tune was worse than doing nothing.** Against the stronger baseline (bare names, 0.526) my unit 5 main run (0.395) lost by 0.131. Fine-tuning only paid off after improvement 1: 8 epochs reached 0.737, which beats the best baseline by 0.211 accuracy and 0.279 macro F1 on these same 38 posts, and beats the with-definitions baseline by 0.500.
+3. **Where the trained model clearly wins:** `analysis` (0.762 vs 0.316 or 0.000) and `question` (0.929 vs 0.133 or 0.722). **Where the baseline is still competitive:** `hot_take` and `reaction` are within 0.2 of each other (bare names 0.353 and 0.533 vs trained 0.533 and 0.500), so the training added little there. These are also the two labels my own cold labelling disagreed on, which points at the labels rather than the model.
 
 ---
-
-## Verdicts and Diagnoses
-
-<!-- MET or MISSED against LAST UNIT's target. The target has to hold across
-     all three seeds, not turn up sometimes. -->
-
-| # | Criterion | Target | Verdict | How I decided |
-|---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
-
-**Diagnoses**
-
-<!-- For each miss: the cause, and how you know. The four common causes are:
-     too few examples for a label, a boundary you applied inconsistently, a
-     genuinely hard label pair, and a task the model can't reach from this
-     much data.
-
-     ⚠️ Use your agreement report as evidence. It is the only instrument you
-     have that can tell a LABELLING problem from a MODEL problem, and this
-     section is graded on whether you used it that way. -->
-
-
-
----
-
-## Agreement Report
-
-<!-- Your rate against the staff set, and every disagreement adjudicated.
-
-     Remember you labelled these 30 under the STAFF taxonomy in
-     data/staff_taxonomy.md, not your own — so every argument below is made
-     from those definitions and those decision rules. -->
-
-**Agreement rate:** ___ / 30 = ___%
-
-<!-- Nobody grades this number. A 60% who argues every disagreement from the
-     stated rules beats a 95% who wrote "staff was right" nine times. Several
-     of the 30 were chosen because they're genuinely ambiguous — you should be
-     winning some of these. -->
-
-**Disagreements**
-
-<!-- Three lines each: the post, both labels, and who you think is right and
-     why — grounded in the staff definitions you were both applying.
-
-     Then sort each into one of three piles:
-       (a) the rule covered it and I applied it loosely → a consistency problem
-       (b) the rule genuinely doesn't say               → a gap in the definitions
-       (c) the rule is ambiguous here and my reading is defensible → argue it.
-           This is a legitimate win.
-
-     Pile (a) is the one that matters most for your diagnosis: if you applied a
-     written rule two different ways on 30 posts, that is direct evidence about
-     what you did across your own 200. -->
-
-**1.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
-
-**2.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
-
-**What the pattern in my disagreements tells me:**
-
-
-
----
-
-## The Improvement
-
-**What I changed:**
-
-**Which diagnosis pointed at it:**
-
-### Run Log — After
-
-| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
-
-**Did it help, and how do I know:**
-
-<!-- If it didn't, say so. Relabelling that didn't help is a genuinely
-     interesting result and earns full credit. -->
-
-
-
----
-
-## What's Still Broken
-
-<!-- For each criterion still missed: what you'd do, and why you stopped. -->
-
-
-
-**The gap between what I meant my labels to capture and what the model
-learned:**
-<!-- Two sentences. Your confusion matrix is the evidence. -->
-
-
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
