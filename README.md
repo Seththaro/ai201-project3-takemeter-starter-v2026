@@ -18,6 +18,16 @@ Declared before I built anything beyond the taxonomy:
 
 ---
 
+## Unit 6 stretch features I'm going for
+
+Declared before I ran the baseline, the three seeds or any improvement:
+
+1. **A confidence check.** Are the model's confident predictions right more often than its unsure ones? I report `accuracy_most_confident_third` against `accuracy_least_confident_third` for every seed and every run log.
+2. **A per-label error write-up** for whichever label the confusion matrix says is worst: which label it gets confused with, and what those posts have in common.
+3. **A second measured improvement.** A second change chosen from the diagnosis, run across the same three seeds and logged in the same table format as a third run log, with a statement of whether it helped.
+
+---
+
 ## What This Does
 
 TakeMeter sorts public Hacker News comments (news.ycombinator.com), the
@@ -296,6 +306,8 @@ them to my label. The 50 extra `question` rows were pre-labelled the same way. T
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
+
+Written before I ran `baseline.py`, and after unit 5, so I already knew my main run (3 epochs) scored only 0.395 accuracy on its 38 test posts. Given that, my prediction is: the zero-shot baseline will beat my trained model on overall accuracy (I'd guess 0.45 to 0.55), and the trained model will only beat it on `question`, where a fine-tuned model can learn the "?" cue and a zero-shot model reading a long definition may not. I expect the baseline to be weakest on `reaction` and `hot_take`, because zero-shot reads my definitions literally and my `hot_take` definition is mostly defined by what is absent.
 
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
